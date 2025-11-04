@@ -3,43 +3,39 @@ from pathlib import Path
 from pydantic import BaseModel
 
 class BaseConfigModel(BaseModel):
-    """
-    Base class for your configuration model
-    To add a configuration you must inherit this class and add a ConfigFileName
-    The .json file extension is not required
-    
-    You should not call load/ save manually.
-    """
     ConfigFileName: str = None
 
     @classmethod
-    def load(cls):
+    def load(cls, env: str = None):
         if cls.ConfigFileName is None:
             raise ValueError(f"{cls.__name__} must define ConfigFileName")
         
-        # Automatically add .json if missing
+        # Construct the filename
         filename = cls.ConfigFileName
-        
-        if not filename.endswith(".json"):
-            filename += ".json"
-            
+        if env:
+            filename += f"-{env}"
+        filename += ".json"  # always append .json internally
+
         path = Path("config/generated") / filename
-        
-        with open(path) as f:
+        if not path.exists():
+            raise FileNotFoundError(f"Config file {path} not found")
+
+        with open(path, "r") as f:
             data = json.load(f)
-            
+
         return cls(**data)
-    
-    def save(self):
+
+    def save(self, env: str = None):
         if self.ConfigFileName is None:
             raise ValueError(f"{self.__class__.__name__} must define ConfigFileName")
-        
+
         filename = self.ConfigFileName
-        if not filename.endswith(".json"):
-            filename += ".json"
-            
+        if env:
+            filename += f"-{env}"
+        filename += ".json"  # always append .json internally
+
         path = Path("config/generated") / filename
-        path.parent.mkdir(parents=True, exist_ok=True)  # ensure folder exists
-        
+        path.parent.mkdir(parents=True, exist_ok=True)
+
         with open(path, "w") as f:
             json.dump(self.model_dump(), f, indent=4)
