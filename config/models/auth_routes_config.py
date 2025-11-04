@@ -1,7 +1,8 @@
+from typing import ClassVar
 from config.base_config_model import BaseConfigModel
 
 class AuthRoutesConfig(BaseConfigModel):
-    ConfigFileName: str = "auth_routes_config"
+    ConfigFileName: ClassVar[str] = "auth_routes_config"
     
     HealthEndpoint: str
     RegisterEndpoint: str

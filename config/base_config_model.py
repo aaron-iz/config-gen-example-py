@@ -1,9 +1,10 @@
 import json
 from pathlib import Path
+from typing import ClassVar
 from pydantic import BaseModel
 
 class BaseConfigModel(BaseModel):
-    ConfigFileName: str = None
+    ConfigFileName: ClassVar[str] = None
 
     @classmethod
     def load(cls, env: str = None):
