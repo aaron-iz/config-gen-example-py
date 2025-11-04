@@ -1,8 +1,6 @@
 from abc import ABC, abstractmethod
 from typing import List, Dict
 
-from config.generators.app_config_gen import AppConfigGenerator
-from config.generators.auth_routes_config_gen import AuthRoutesConfigGenerator
 from .base_config_model import BaseConfigModel
 
 # ------------------------
@@ -29,10 +27,7 @@ class ConfigGenerator(ABC):
 # List of all generator instances
 # ------------------------
 # Developers should register their generators here
-GENERATORS: List[ConfigGenerator] = [
-    AppConfigGenerator(),
-    AuthRoutesConfigGenerator(),
-]
+GENERATORS: List[ConfigGenerator] = []
 
 # ------------------------
 # Runner: generate and save all configs for all environments

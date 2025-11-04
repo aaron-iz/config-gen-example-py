@@ -89,13 +89,11 @@ class AppConfigGenerator(ConfigGenerator):
 
 ## 4. Registering Generators
 
-All generators must be **registered in the `GENERATORS` list** in `config_generation.py`:
+All generators must be **registered in the `GENERATORS` list** in `run_generate_configs.py`:
 
 ```python
-GENERATORS: List[ConfigGenerator] = [
-    AppConfigGenerator(),
-    AuthRoutesConfigGenerator(),
-]
+# Register your configurations here:
+GENERATORS.append(AppConfigGenerator())
 ```
 
 - Only registered generators will be used when generating JSON files.
@@ -107,7 +105,7 @@ GENERATORS: List[ConfigGenerator] = [
 To generate JSON configuration files for all environments:
 
 ```bash
-python run_generate_configs.py
+poetry run python config.run_generate_configs.py
 ```
 
 - This will create the corresponding files in `config/generated/`  

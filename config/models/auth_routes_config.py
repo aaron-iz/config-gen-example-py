@@ -1,7 +1,7 @@
 from config.base_config_model import BaseConfigModel
 
 class AuthRoutesConfig(BaseConfigModel):
-    ConfigFileName = "auth_routes_config"
+    ConfigFileName: str = "auth_routes_config"
     
     HealthEndpoint: str
     RegisterEndpoint: str
