@@ -1,0 +1,6 @@
+{
+  "HealthEndpoint": "/health",
+  "RegisterEndpoint": "/register",
+  "LoginEndpoint": "/login",
+  "VerifyEndpoint": "/verify"
+}
