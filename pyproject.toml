@@ -1,0 +1,27 @@
+[project]
+name = "authentication-microservice-py"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "Aaron Iziyaev",email = "aron.iz.gab@gmail.com"}
+]
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "fastapi (>=0.121.0,<0.122.0)",
+    "uvicorn (>=0.38.0,<0.39.0)",
+    "pyjwt (>=2.10.1,<3.0.0)",
+    "passlib[bcrypt] (>=1.7.4,<2.0.0)"
+]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[dependency-groups]
+dev = [
+    "pytest (>=8.4.2,<9.0.0)",
+    "black (>=25.9.0,<26.0.0)",
+    "isort (>=7.0.0,<8.0.0)"
+]
