@@ -1,0 +1,1 @@
+You don't have to define your models here, you can define them where it makes sense for your project structure
