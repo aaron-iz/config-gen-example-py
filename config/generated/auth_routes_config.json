@@ -1,5 +1,4 @@
 {
-    "ConfigFileName": "auth_routes_config",
     "HealthEndpoint": "/health",
     "RegisterEndpoint": "/register",
     "LoginEndpoint": "/login",

@@ -1,5 +1,4 @@
 {
-    "ConfigFileName": "app_config",
     "Title": "Infra-AuthenticationService",
     "AuthExtension": "/api/auth"
 }
