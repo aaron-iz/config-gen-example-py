@@ -1,0 +1,58 @@
+# ------------------------------
+# Python artifacts
+# ------------------------------
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.env
+*.venv
+*.egg-info/
+dist/
+build/
+
+# Poetry virtualenvs (if created inside project)
+.venv/
+poetry.lock
+
+# ------------------------------
+# Docker
+# ------------------------------
+# Ignore local Docker build cache and temp files
+*.log
+docker-compose.override.yml
+*.dockerignore~
+
+# Optional: ignore Docker volumes or persistent data directories
+data/
+*.db
+
+# ------------------------------
+# VS Code
+# ------------------------------
+.vscode/
+.history/
+*.code-workspace
+
+# ------------------------------
+# Devcontainer
+# ------------------------------
+.devcontainer/.vscode-test/
+
+# ------------------------------
+# macOS / Linux / Windows
+# ------------------------------
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*.bak
+*.orig
+*.tmp
+
+# ------------------------------
+# Testing
+# ------------------------------
+.pytest_cache/
+.coverage
+htmlcov/
