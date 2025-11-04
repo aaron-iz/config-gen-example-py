@@ -1,4 +1,5 @@
 from fastapi import APIRouter
+from config.config_container import config
 
 router = APIRouter()
 
@@ -8,19 +9,19 @@ def placeholder_response():
     """
     return {"status": "ok"}
 
-@router.get("/health")
+@router.get(config.AuthRoutesConfig.HealthEndpoint)
 def health_check():
     return placeholder_response()
 
-@router.post("/register")
+@router.post(config.AuthRoutesConfig.RegisterEndpoint)
 def register_user():
     return placeholder_response()
 
-@router.post("/login")
+@router.post(config.AuthRoutesConfig.LoginEndpoint)
 def login_user():
     return placeholder_response()
 
-@router.post("/verify")
+@router.post(config.AuthRoutesConfig.VerifyEndpoint)
 def verify_token():
     return placeholder_response()
 
