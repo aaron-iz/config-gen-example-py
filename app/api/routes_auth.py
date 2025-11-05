@@ -1,8 +1,7 @@
 from datetime import timedelta
 import datetime
 from fastapi import APIRouter, Depends, HTTPException
-from fastapi import security
-from fastapi.security import HTTPAuthorizationCredentials
+from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 from app.api.user_login_dto import UserLoginDTO
 from app.api.user_registration_dto import UserRegistrationDTO
 from app.core.security import create_token, decode_token
@@ -13,6 +12,7 @@ import bcrypt
 
 
 router = APIRouter()
+security = HTTPBearer()
 
 
 def placeholder_response():
