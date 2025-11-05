@@ -6,7 +6,7 @@ ALGO = "HS256"
 # Properties:
 __jwt_secret = None
 
-# Load:
+# Load (abstracts away implemetation):
 def load_secret():
     global __jwt_secret
     if __jwt_secret is not None:
