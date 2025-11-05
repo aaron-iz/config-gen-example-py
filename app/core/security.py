@@ -16,7 +16,7 @@ def load_jwt_secret():
     filename = config.AppConfig.JwtSecretFileName
     
     with open(filename, "r") as f:
-        __jwt_secret = f.read()
+        __jwt_secret = f.read().strip()
     
     __jwt_secret
 

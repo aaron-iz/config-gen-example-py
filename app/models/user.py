@@ -15,6 +15,6 @@ class User(BaseModel):
     username: str = Field(..., min_length=USERNAME_MIN_LENGTH)
     password: str = Field(..., min_length=PASSWORD_MIN_LENGTH)
     full_name: str = Field(..., min_length=1)
-    time_created: datetime = Field(default_factory=datetime.now(timezone.utc))
-    last_password_changed: datetime = Field(default_factory=datetime.now(timezone.utc))
+    time_created: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
+    last_password_changed: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
     roles: List[Role] = Field(default_factory=list)

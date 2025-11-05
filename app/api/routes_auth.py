@@ -28,11 +28,13 @@ def health_check():
 
 
 def create_jwt_token(user: User):
+    exp_time = int((datetime.datetime.now(datetime.timezone.utc) + timedelta(minutes=180)).timestamp())  # Move this to configuration
+    
     jwt_token = create_token({
-        "user_id": user["id"],
-        "username": user["username"],
-        "full_name": user["full_name"],
-        "exp": datetime.utcnow() + timedelta(minutes=180)  # Move this to configuration
+        "user_id": str(user.id),
+        "username": user.username,
+        "full_name": user.full_name,
+        "exp": exp_time
     })
     
     return {"token": jwt_token}
@@ -48,7 +50,7 @@ def register_user(user_registration_dto: UserRegistrationDTO):
         full_name=user_registration_dto.full_name
     )
     
-    save(user.model_dump())
+    save(user.model_dump_json())
     
     return create_jwt_token(user)
 
@@ -68,7 +70,7 @@ def login_user(user_login_dto: UserLoginDTO):
     return create_jwt_token(user)
 
 
-@router.post(config.AuthRoutesConfig.VerifyEndpoint)
+@router.get(config.AuthRoutesConfig.VerifyEndpoint)
 def verify_token(credentials: HTTPAuthorizationCredentials = Depends(security)):
     token = credentials.credentials
 
