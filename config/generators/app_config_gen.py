@@ -11,7 +11,8 @@ class AppConfigGenerator(ConfigGenerator):
     def generate(self) -> Dict[str, AppConfig]:
         default_config = AppConfig(
             Title="Infra-AuthenticationService",
-            AuthExtension="/api/auth"
+            AuthExtension="/api/auth",
+            JwtSecretFileName=".secret"
         )
 
         return {

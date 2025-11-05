@@ -6,3 +6,4 @@ class AppConfig(BaseConfigModel):
     
     Title: str
     AuthExtension: str
+    JwtSecretFileName: str
