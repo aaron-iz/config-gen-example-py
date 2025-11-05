@@ -1,4 +1,5 @@
 {
     "Title": "Infra-AuthenticationService",
-    "AuthExtension": "/api/auth"
+    "AuthExtension": "/api/auth",
+    "JwtSecretFileName": ".secret"
 }
